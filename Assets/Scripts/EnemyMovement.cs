@@ -10,7 +10,13 @@ public class EnemyMovement : MonoBehaviour
     private Transform target;
     public NavMeshAgent myAgent;
 
-    private void Update()
+
+    private void Start()
+    {
+        endGoal = GameObject.FindGameObjectWithTag("EndPoint").transform;
+    }
+
+    void Update()
     {
         //TODO: Scan for target
 
@@ -29,7 +35,7 @@ public class EnemyMovement : MonoBehaviour
     //Move towards the target and attack the target.
     private void attackTarget()
     {
-
+        //TODO
     }
 
     //Target doesn't exists so move towards end goal.
