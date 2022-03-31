@@ -4,30 +4,30 @@ using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
 {
-
-    public float cameraPanSpeed = 10f;
-    public Transform heroModel;
     private bool followHero = false;
+    public Transform heroModel;
+    public float cameraPanSpeed = 10f;
+    public float edgeSize = 10f;
 
     // Update is called once per frame
     void Update()
     {
         //Forward
-        if (Input.GetKey("up")){
+        if ((Input.GetKey("up") || Input.mousePosition.y > Screen.height - edgeSize) && !followHero){
             transform.position += new Vector3(0, 0, cameraPanSpeed * Time.deltaTime);
         }
         //Backward
-        if (Input.GetKey("down"))
+        if ((Input.GetKey("down") || Input.mousePosition.y < edgeSize)  && !followHero)
         {
             transform.position += new Vector3(0, 0, -cameraPanSpeed * Time.deltaTime);
         }
         //Left
-        if (Input.GetKey("left"))
+        if ((Input.GetKey("left") || Input.mousePosition.x < edgeSize) && !followHero)
         {
             transform.position += new Vector3(-cameraPanSpeed * Time.deltaTime, 0, 0);
         }
         //Right
-        if (Input.GetKey("right"))
+        if ((Input.GetKey("right") || Input.mousePosition.x > Screen.width - edgeSize) && !followHero)
         {
             transform.position += new Vector3(cameraPanSpeed * Time.deltaTime, 0, 0);
         }
@@ -42,9 +42,8 @@ public class CameraMovement : MonoBehaviour
         {
             followHero = !followHero;
         }
-		
-		
-		//TODO: Pan camera at edges of game
+
+        //TODO: Add camera zooming
 
     }
 }
