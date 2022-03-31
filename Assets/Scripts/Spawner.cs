@@ -4,21 +4,14 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
 
-    public Transform[] mobTypes;
-    public int waveLevel = 0;
-    public float countdown = 60f;
     public Transform[] spawnPoints;
+    public Transform[] mobTypes;
+    private int waveLevel = 0;
+    public float countdown = 60f;
     public float timeBetweenEnemies = 5f;
     public float waveDuration = 60f;
     public float timeBetweenWaves = 5f;
 
-
-    private void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
         if(countdown <= 0)
@@ -29,10 +22,11 @@ public class Spawner : MonoBehaviour
             }
             else
             {
-                //TODO: Make sure all enemies are dead
-                GameManager.Instance.gameWon();
+                if(GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
+                {
+                    GameManager.Instance.gameWon();
+                }
             }
-
         }
         countdown -= Time.deltaTime;
     }
@@ -40,10 +34,9 @@ public class Spawner : MonoBehaviour
     //Spawns a wave of enemies and 
     IEnumerator spawnWave()
     {
-        Debug.Log("Wave " + waveLevel + " is spawning!");
         countdown = waveDuration + timeBetweenWaves;
 
-        for (int i = 0; i < (waveDuration / timeBetweenEnemies); i++) {
+        for (int i = 0; i <= (waveDuration / timeBetweenEnemies); i++) {
             spawnEnemies();
             yield return new WaitForSeconds(timeBetweenEnemies);
         }

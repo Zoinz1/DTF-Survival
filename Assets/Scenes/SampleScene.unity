@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 464340393}
   m_Layer: 0
   m_Name: EndPoint
-  m_TagString: Untagged
+  m_TagString: EndPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -574,14 +574,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e7653f1c88bc0c4ba7688e557f20ea4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mobTypes:
-  - {fileID: 6113412795441240408, guid: 1ce0f4c0f6a1cc94d808b9208720dd52, type: 3}
-  waveLevel: 0
-  countdown: 5
   spawnPoints:
   - {fileID: 1434244509}
   - {fileID: 470840814}
   - {fileID: 630049777}
+  mobTypes:
+  - {fileID: 6113412795441240408, guid: 1ce0f4c0f6a1cc94d808b9208720dd52, type: 3}
+  countdown: 5
   timeBetweenEnemies: 5
   waveDuration: 60
   timeBetweenWaves: 5
